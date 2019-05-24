@@ -8,6 +8,7 @@
 #endif
 
 #include "AudioControl.h"
+#include "WireKinetis_mod.h"
 #include <Arduino.h>
 //#include "Wire.h"
 #include <i2c_t3.h>
@@ -85,8 +86,8 @@
 class AudioControlPCM3168A : public AudioControl
 {
   public:
-    // ***
-    // ***  DEBUG TO SERIAL
+    
+    // DEBUG TO SERIAL
     AudioControlPCM3168A(void) {
       debugToSerial = false;
     };
@@ -95,10 +96,12 @@ class AudioControlPCM3168A : public AudioControl
     };
     void TesteSerial(void);
     bool debugToSerial;
+    
+    // I2C Slave
     void setSlaveAddress(uint8_t adress = 0x44);
 
-    // ***
-    // ***  PUBLIC AudioControl
+
+    // AudioControl
     bool enable(void);
     bool disable(void);
 
